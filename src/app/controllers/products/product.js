@@ -20,4 +20,18 @@ export const productController = {
             console.log({ error })
         }
     },
+
+    async getAll(req, res) {
+        try {
+            const products = await ProductModel.find();
+
+            if (!products) {
+                res.status(200).json({ data: "", message: "There's no products here!"})
+            }
+
+            res.status(200).json(products);
+        } catch(error) {
+            console.log({ error })
+        }
+    }
 }
