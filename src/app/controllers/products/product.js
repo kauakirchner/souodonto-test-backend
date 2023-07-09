@@ -1,4 +1,5 @@
-import { ProductModel } from "../../models/products/products.js"
+import { createProduct } from "../../services/create/create.product.js";
+import { getAllProducts } from "../../services/get/get.product.js";
 
 export const productController = {
     async create(req, res) {
@@ -11,10 +12,9 @@ export const productController = {
                 isProductRequired: req.body.isProductRequired
             };
 
-            const response = await ProductModel.create(product);
-            res
-            .status(201)
-            .json({ response, message: "Product created successfully!"})
+            const response = await createProduct(product)
+
+            res.status(201).json({ response, message: "Product created successfully!"})
 
         } catch(error) {
             console.log({ error })
@@ -23,13 +23,15 @@ export const productController = {
 
     async getAll(req, res) {
         try {
-            const products = await ProductModel.find();
+            const response = await getAllProducts();
 
-            if (!products) {
-                res.status(200).json({ data: "", message: "There's no products here!"})
+            if (!response) {
+                res.status(200).json({ message: "There's no products here!" })
+                return false;
             }
 
-            res.status(200).json(products);
+            res.status(200).json({ response });
+
         } catch(error) {
             console.log({ error })
         }

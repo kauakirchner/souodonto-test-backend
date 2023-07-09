@@ -15,7 +15,7 @@ export const productSchema = new Schema({
     { timestamps: true },
 );
 
-export const ProductModel = mongoose.model("Product", productSchema)
+export const ProductRepositorie = mongoose.model("Product", productSchema)
  
 
 
