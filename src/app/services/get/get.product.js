@@ -1,6 +1,6 @@
 import { ProductRepositorie } from "../../repositories/products/products.js";
 
-async function getAllProducts() {
+async function getProducts() {
     try {
         const response = await ProductRepositorie.find();
         return response;
@@ -10,4 +10,4 @@ async function getAllProducts() {
     }
 }
 
-export { getAllProducts }
+export { getProducts }
