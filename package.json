@@ -5,8 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon src/app/server.js",
-    "test": "jest"
+    "start": "nodemon src/app/server.js"
   },
   "keywords": [],
   "author": "",
@@ -17,8 +16,5 @@
     "mongodb": "^5.7.0",
     "mongoose": "^7.3.2",
     "nodemon": "^3.0.1"
-  },
-  "devDependencies": {
-    "jest": "^29.6.1"
   }
 }
