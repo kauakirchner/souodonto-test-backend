@@ -3,7 +3,7 @@ import { getProducts } from "../../services/get/get.product.js";
 
 export const productController = {
     async create(req, res) {
-        if (!res.body) {
+        if (!req.body) {
             res.status(400).json({ error: "BAD REQUEST, missing params!"});
             return false;
         }
