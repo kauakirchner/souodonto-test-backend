@@ -1,14 +1,13 @@
-import { createProduct } from "../../services/create/create.product.js";
-import { getProducts } from "../../services/get/get.product.js";
+import { ProductService } from "../../services/products/product.js";
 
-export const productController = {
+export const ProductController = {
     async create(req, res) {
         if (!req.body) {
             res.status(400).json({ error: "BAD REQUEST, missing params!"});
             return false;
         }
         try {
-            const product = {
+            const payload = {
                 productImage: req.body.productImage,
                 productName: req.body.productName,
                 productBrand: req.body.productBrand,
@@ -17,7 +16,7 @@ export const productController = {
             };
 
 
-            const response = await createProduct(product);
+            const response = await ProductService.create(payload);
 
             res.status(201).json({ response, message: "Product created successfully!"});
 
@@ -29,7 +28,7 @@ export const productController = {
 
     async getAll(req, res) {
         try {
-            const response = await getProducts();
+            const response = await ProductService.get();
 
             if (!response) {
                 res.status(200).json({ message: "There's no products here!" });
@@ -40,7 +39,7 @@ export const productController = {
 
         } catch(error) {
             console.log({ error });
-            res.status(500).json({ error: "INTERN SERVER ERROR!"})
+            res.status(500).json({ error: "INTERN SERVER ERROR!"});
         }
     }
 }

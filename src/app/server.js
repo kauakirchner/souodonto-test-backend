@@ -1,5 +1,5 @@
 import express from "express";
-import cors  from "cors";
+import cors from "cors";
 import { connectToMongoDB } from "./db/connect.js";
 import routes from "./routes/router.js";
 
@@ -7,7 +7,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("/products", routes)
+app.use("/", routes)
 
 connectToMongoDB();
 
