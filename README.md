@@ -13,7 +13,11 @@ Para executar o projeto, siga as etapas abaixo:
 ```sh
 npm install
 ```
-4. Após a conclusão da instalação das dependências, execute o seguinte comando para iniciar o servidor:
+4. Crie um Banco de dados no MongoDb atlas ou MongoDB compass e insira a string de conexão em um arquivo .env na raiz do projeto com o seguinte nome:
+
+# MONGO_DB_URL
+
+5. Após a conclusão da instalação das dependências, execute o seguinte comando para iniciar o servidor:
 
 ```sh
 npm start
@@ -48,12 +52,14 @@ Exemplo de resposta:
  "isProductRequired": false
 }
 ]
+```
 
 ### POST: /products/create
 
 Este endpoint permite a criação de novos produtos
 
-Exemplo do que precisa ser mandado no body da requisição:
+Body da Requisição:
+```json
 {
   "productImage": "img.jpg",
   "productName": "Nome do Novo Produto",
@@ -61,3 +67,4 @@ Exemplo do que precisa ser mandado no body da requisição:
   "productQuantity": 20,
   "isProductRequired": true
 }
+```
